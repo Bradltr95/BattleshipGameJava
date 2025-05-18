@@ -1,0 +1,1 @@
+A text-based battleship style game. The user will be prompted for a guess and will check the ship locations returning either hit, miss or kill if all cells have been guessed.
