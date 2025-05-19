@@ -30,14 +30,23 @@ public class Battleship {
         String hitStatus = "miss";
 
         for (int locationCell : locationCells) {
+            if(locationCell == -1) {
+                hitStatus = "miss";
+                break;
+            }
+
             if (locationCell == userGuess) {
+                // If the location cell is -1 then we have hit this cell before and
+                // we want to return a missr
                 hitStatus = "hit";
+                // Set the location cell to -1 so we know its been hit
                 numOfHits++;
                 break;
             }
         }
 
         if(numOfHits == locationCells.length) { hitStatus = "kill"; }
+
 
         return hitStatus;
     }
