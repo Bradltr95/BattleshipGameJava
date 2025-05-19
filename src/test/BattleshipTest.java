@@ -7,6 +7,7 @@ class BattleshipTest {
         System.out.println("Test Case 1: " + checkMissTest());
         System.out.println("Test Case 2: " + checkHitTest());
         System.out.println("Test Case 3: " + checkKillTest());
+        System.out.println("Test Case 4: " + checkHitThenMiss());
     }
 
     // Complete writing this test case
@@ -48,4 +49,19 @@ class BattleshipTest {
         }
         return testResult;
     }
+
+    public static String checkHitThenMiss() {
+        Battleship ship = new Battleship();
+        ship.setLocation(4); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit(4);
+        String missResult = ship.checkHit(3);
+
+        String testResult = "failed";
+        if(missResult.equals("miss") && hitResult.equals("hit")) {
+            testResult = "passed";
+        }
+        return testResult;
+    }
+
+
 }
