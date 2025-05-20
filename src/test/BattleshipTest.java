@@ -5,7 +5,8 @@ import java.util.logging.Logger;
 
 class BattleshipTest {
     // Use the logger to report test results instead of using Systems print function.
-    static Logger logger = Logger.getLogger(BattleshipTest.class.getName());
+    private static final Logger logger = Logger.getLogger(BattleshipTest.class.getName());
+    private static final String failedStatus = "failed";
 
     public static void main(String[] args) {
         logger.info("Test Case 1: " + checkMissTest());
@@ -26,7 +27,7 @@ class BattleshipTest {
         ship.setLocation(4); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit(4);
 
-        String testResult = "failed";
+        String testResult = failedStatus;
         if(hitResult.equals("hit")) {
             testResult = "passed";
         }
@@ -46,7 +47,7 @@ class BattleshipTest {
         ship.checkHit(5);
         // We only need to capture the last hit to see if we get a "kill"
         String hitResult = ship.checkHit(6);
-        String testResult = "failed";
+        String testResult = failedStatus;
         if(hitResult.equals("kill")) {
             testResult = "passed";
         }
@@ -64,7 +65,7 @@ class BattleshipTest {
         ship.setLocation(4); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit(3);
 
-        String testResult = "failed";
+        String testResult = failedStatus;
         if(hitResult.equals("miss")) {
             testResult = "passed";
         }
@@ -84,7 +85,7 @@ class BattleshipTest {
         String hitResult = ship.checkHit(4);
         String missResult = ship.checkHit(3);
 
-        String testResult = "failed";
+        String testResult = failedStatus;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
             testResult = "passed";
         }
@@ -103,7 +104,7 @@ class BattleshipTest {
         String hitResult = ship.checkHit(4);
         String missResult = ship.checkHit(4);
 
-        String testResult = "failed";
+        String testResult = failedStatus;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
             testResult = "passed";
         }
