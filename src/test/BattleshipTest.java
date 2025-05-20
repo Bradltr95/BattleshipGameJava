@@ -1,15 +1,26 @@
 package test;
 
 import main.Battleship;
+import java.util.logging.Logger;
 
 class BattleshipTest {
+    // Use the logger to report test results instead of using Systems print function.
+    static Logger logger = Logger.getLogger(BattleshipTest.class.getName());
+
     public static void main(String[] args) {
-        System.out.println("Test Case 1: " + checkMissTest());
-        System.out.println("Test Case 2: " + checkHitTest());
-        System.out.println("Test Case 3: " + checkKillTest());
+        logger.info("Test Case 1: " + checkMissTest());
+        logger.info("Test Case 2: " + checkHitTest());
+        logger.info("Test Case 3: " + checkKillTest());
+        logger.info("Test Case 4: " + checkHitThenMiss());
+        logger.info("Test Case 5: " + hitSameLocationTwice());
     }
 
-    // Complete writing this test case
+    /**
+     * Create a ship, set its location and verify that the correct string is returned when
+     * we successfully guess and hit one of the ship's locations.
+     * @return testResult - The given test result as a String. Either "passed" or "failed"
+     * @date 05/19/25
+     */
     public static String checkHitTest() {
         Battleship ship = new Battleship();
         ship.setLocation(4); // Will set the location cells to 4, 5, 6
@@ -22,7 +33,12 @@ class BattleshipTest {
         return testResult;
     }
 
-    // Complete writing this test case
+    /**
+     * Create a ship, set its location and verify that the correct string is returned when
+     * we successfully guess and hit all of the ship's locations sinking/"killing" the ship.
+     * @return testResult - The given test result as a String. Either "passed" or "failed"
+     * @date 05/19/25
+     */
     public static String checkKillTest() {
         Battleship ship = new Battleship();
         ship.setLocation(4); // Will set the location cells to 4, 5, 6
@@ -37,6 +53,12 @@ class BattleshipTest {
         return testResult;
     }
 
+    /**
+     * Create a ship, set its location and verify that the corrcet string is returned when we miss a ship.
+     * @return testResult - The given test result as a String. Either "passed" or "failed".
+     * @author Bradley Latreille
+     * @date 05/19/25
+     */
     public static String checkMissTest() {
         Battleship ship = new Battleship();
         ship.setLocation(4); // Will set the location cells to 4, 5, 6
@@ -44,6 +66,45 @@ class BattleshipTest {
 
         String testResult = "failed";
         if(hitResult.equals("miss")) {
+            testResult = "passed";
+        }
+        return testResult;
+    }
+
+    /**
+     * Create a battleship, set its location and hit the ship followed by a miss. The test
+     * checks that the hit result and the miss result return the expected string value.
+     * @return testResult - The given test result as a String. Either "passed" or "failed".
+     * @author Bradley Latreille
+     * @date 05/19/25
+     */
+    public static String checkHitThenMiss() {
+        Battleship ship = new Battleship();
+        ship.setLocation(4); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit(4);
+        String missResult = ship.checkHit(3);
+
+        String testResult = "failed";
+        if(missResult.equals("miss") && hitResult.equals("hit")) {
+            testResult = "passed";
+        }
+        return testResult;
+    }
+
+    /***
+     * Test to ensure that we don't get a hit back if we keep trying to hit the same spot.
+     * @return testResult - The result of the test is returned as a String
+     * @author Bradley Latreille
+     * @date 05/19/25
+     */
+    public static String hitSameLocationTwice() {
+        Battleship ship = new Battleship();
+        ship.setLocation(4); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit(4);
+        String missResult = ship.checkHit(4);
+
+        String testResult = "failed";
+        if(missResult.equals("miss") && hitResult.equals("hit")) {
             testResult = "passed";
         }
         return testResult;
