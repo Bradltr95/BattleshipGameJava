@@ -29,24 +29,20 @@ public class Battleship {
     public String checkHit(int userGuess) {
         String hitStatus = "miss";
 
-        for (int locationCell : locationCells) {
-            if(locationCell == -1) {
-                hitStatus = "miss";
+        for(int i = 0; i < locationCells.length; i++) {
+            if(locationCells[i] == userGuess) { // hit
+                locationCells[i] = -1; // Lets us know the cell has been hit before
+                numOfHits++; // Increments the number of hits
+                hitStatus = "hit";
                 break;
             }
 
-            if (locationCell == userGuess) {
-                // If the location cell is -1 then we have hit this cell before and
-                // we want to return a missr
-                hitStatus = "hit";
-                // Set the location cell to -1 so we know its been hit
-                numOfHits++;
-                break;
+            if(locationCells[i] == -1) {
+                hitStatus = "miss"; // we've hit this before
             }
         }
 
         if(numOfHits == locationCells.length) { hitStatus = "kill"; }
-
 
         return hitStatus;
     }
