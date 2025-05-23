@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Battleship {
     private ArrayList<Integer> locationCells = new ArrayList<>();
-    //private int[] locationCells = new int[3];
     private int numOfHits = 0;
 
     /***
