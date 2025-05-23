@@ -1,7 +1,9 @@
 package main;
 
+import java.util.ArrayList;
+
 public class Battleship {
-    private int[] locationCells = new int[3];
+    private ArrayList<Integer> locationCells = new ArrayList<>();
     private int numOfHits = 0;
 
     /***
@@ -13,8 +15,8 @@ public class Battleship {
      * @param baseNumber The starting position on the battleship grid.
      */
     public void setLocation(int baseNumber) {
-        for(int i = 0; i < locationCells.length; i++) {
-            this.locationCells[i] = baseNumber + i;
+        for(int i = 0; i < locationCells.size(); i++) {
+            locationCells.add(baseNumber);
         }
     }
 
@@ -29,20 +31,20 @@ public class Battleship {
     public String checkHit(int userGuess) {
         String hitStatus = "miss";
 
-        for(int i = 0; i < locationCells.length; i++) {
-            if(locationCells[i] == userGuess) { // hit
-                locationCells[i] = -1; // Lets us know the cell has been hit before
+        for(int i = 0; i < locationCells.size(); i++) {
+            if(locationCells.contains(userGuess)) { // hit
+                locationCells.set(i, -1); // Lets us know the cell has been hit before
                 numOfHits++; // Increments the number of hits
                 hitStatus = "hit";
                 break;
             }
 
-            if(locationCells[i] == -1) {
+            if(locationCells.contains(-1)) {
                 hitStatus = "miss"; // we've hit this before
             }
         }
 
-        if(numOfHits == locationCells.length) { hitStatus = "kill"; }
+        if(numOfHits == locationCells.size()) { hitStatus = "kill"; }
 
         return hitStatus;
     }
