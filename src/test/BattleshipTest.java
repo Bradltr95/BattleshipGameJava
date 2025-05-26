@@ -24,8 +24,10 @@ class BattleshipTest {
      */
     public static String checkHitTest() {
         Battleship ship = new Battleship();
-        ship.setLocation(4); // Will set the location cells to 4, 5, 6
-        String hitResult = ship.checkHit(4);
+        ship.setLocation("A4");
+        ship.setLocation("A5");
+        ship.setLocation("A6");
+        String hitResult = ship.checkHit("A4");
 
         String testResult = failedStatus;
         if(hitResult.equals("hit")) {
@@ -42,11 +44,8 @@ class BattleshipTest {
      */
     public static String checkKillTest() {
         Battleship ship = new Battleship();
-        ship.setLocation(4); // Will set the location cells to 4, 5, 6
-        ship.checkHit(4);
-        ship.checkHit(5);
-        // We only need to capture the last hit to see if we get a "kill"
-        String hitResult = ship.checkHit(6);
+        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit("A4");
         String testResult = failedStatus;
         if(hitResult.equals("kill")) {
             testResult = "passed";
@@ -62,8 +61,8 @@ class BattleshipTest {
      */
     public static String checkMissTest() {
         Battleship ship = new Battleship();
-        ship.setLocation(4); // Will set the location cells to 4, 5, 6
-        String hitResult = ship.checkHit(3);
+        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit("A3");
 
         String testResult = failedStatus;
         if(hitResult.equals("miss")) {
@@ -81,9 +80,11 @@ class BattleshipTest {
      */
     public static String checkHitThenMiss() {
         Battleship ship = new Battleship();
-        ship.setLocation(4); // Will set the location cells to 4, 5, 6
-        String hitResult = ship.checkHit(4);
-        String missResult = ship.checkHit(3);
+        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        ship.setLocation("A5"); // Will set the location cells to 4, 5, 6
+        ship.setLocation("A6"); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit("A4");
+        String missResult = ship.checkHit("A3");
 
         String testResult = failedStatus;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
@@ -100,9 +101,11 @@ class BattleshipTest {
      */
     public static String hitSameLocationTwice() {
         Battleship ship = new Battleship();
-        ship.setLocation(4); // Will set the location cells to 4, 5, 6
-        String hitResult = ship.checkHit(4);
-        String missResult = ship.checkHit(4);
+        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        ship.setLocation("A5"); // Will set the location cells to 4, 5, 6
+        ship.setLocation("A6"); // Will set the location cells to 4, 5, 6
+        String hitResult = ship.checkHit("A4");
+        String missResult = ship.checkHit("A4");
 
         String testResult = failedStatus;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
