@@ -15,9 +15,8 @@ public class Battleship {
      * @param baseLocation The starting position on the battleship grid.
      */
     public void setLocation(String baseLocation) {
-        for(int i = 0; i < locationCells.size(); i++) {
-            locationCells.add(baseLocation);
-        }
+        locationCells.add(baseLocation);
+
     }
 
     /***
