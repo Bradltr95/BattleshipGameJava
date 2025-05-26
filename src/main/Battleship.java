@@ -30,15 +30,16 @@ public class Battleship {
     public String checkHit(String userGuess) {
         String hitStatus = "miss";
 
-        for(String location : locationCells) {
-            // This will return -1 if the index doesnt exist
-            int index = locationCells.indexOf(userGuess);
+        int index = locationCells.indexOf(userGuess);
 
-            if(index >= 0) { // If the number is greater than 0 we know its a hit
-                numOfHits++;
+        if(index >= 0) { // If the number is greater than 0 we know its a hit
+            locationCells.remove(index);
+            numOfHits++;
+
+            if(locationCells.isEmpty()) {
+                hitStatus = "kill";
+            }else {
                 hitStatus = "hit";
-                locationCells.remove(index);
-                break;
             }
         }
 
