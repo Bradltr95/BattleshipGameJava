@@ -6,7 +6,8 @@ import java.util.logging.Logger;
 class BattleshipTest {
     // Use the logger to report test results instead of using Systems print function.
     private static final Logger logger = Logger.getLogger(BattleshipTest.class.getName());
-    private static final String failedStatus = "failed";
+    private static final String FAILED = "failed";
+    private static String PASSED = "passed";
 
     public static void main(String[] args) {
         logger.info("Test Case 1: " + checkMissTest());
@@ -27,9 +28,9 @@ class BattleshipTest {
         ship.setLocation("A4");
         String hitResult = ship.checkHit("A4");
 
-        String testResult = failedStatus;
+        String testResult = FAILED;
         if(hitResult.equals("hit")) {
-            testResult = "passed";
+            testResult = PASSED;
         }
         return testResult;
     }
@@ -44,9 +45,9 @@ class BattleshipTest {
         Battleship ship = new Battleship();
         ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit("A4");
-        String testResult = failedStatus;
+        String testResult = FAILED;
         if(hitResult.equals("kill")) {
-            testResult = "passed";
+            testResult = PASSED;
         }
         return testResult;
     }
@@ -62,9 +63,9 @@ class BattleshipTest {
         ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit("A3");
 
-        String testResult = failedStatus;
+        String testResult = FAILED;
         if(hitResult.equals("miss")) {
-            testResult = "passed";
+            testResult = PASSED;
         }
         return testResult;
     }
@@ -82,9 +83,9 @@ class BattleshipTest {
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A3");
 
-        String testResult = failedStatus;
+        String testResult = FAILED;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
-            testResult = "passed";
+            testResult = PASSED;
         }
         return testResult;
     }
@@ -101,9 +102,9 @@ class BattleshipTest {
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A4");
 
-        String testResult = failedStatus;
+        String testResult = FAILED;
         if(missResult.equals("miss") && hitResult.equals("hit")) {
-            testResult = "passed";
+            testResult = PASSED;
         }
         return testResult;
     }
