@@ -25,8 +25,6 @@ class BattleshipTest {
     public static String checkHitTest() {
         Battleship ship = new Battleship();
         ship.setLocation("A4");
-        ship.setLocation("A5");
-        ship.setLocation("A6");
         String hitResult = ship.checkHit("A4");
 
         String testResult = failedStatus;
@@ -81,8 +79,6 @@ class BattleshipTest {
     public static String checkHitThenMiss() {
         Battleship ship = new Battleship();
         ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
-        ship.setLocation("A5"); // Will set the location cells to 4, 5, 6
-        ship.setLocation("A6"); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A3");
 
@@ -102,8 +98,6 @@ class BattleshipTest {
     public static String hitSameLocationTwice() {
         Battleship ship = new Battleship();
         ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
-        ship.setLocation("A5"); // Will set the location cells to 4, 5, 6
-        ship.setLocation("A6"); // Will set the location cells to 4, 5, 6
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A4");
 

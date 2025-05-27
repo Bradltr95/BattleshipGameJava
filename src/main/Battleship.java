@@ -7,16 +7,19 @@ public class Battleship {
     private int numOfHits = 0;
 
     /***
-     * This function will set the 3 cell locations of the battlship based on the initial
-     * baseNumber that gets passed into the function. ex: if baseNumber of 5 is passed, then
-     * the function will set the battleships location to 5, 6, 7. This assumes the array has a size
-     * of 3. The function is able to increment from the base number for however many cells exist in the
-     * locationCells array of the battleship.
+     * The purpose of this fucntion is to set the location of the ships 3 cells automatically for us based
+     * on the initial baseLocation paramater that we provide. For example, if we provide a base of A4 then
+     * the function will extract the A and 4, increment the number portion and add the other two cells to the location
+     * array list.
      * @param baseLocation The starting position on the battleship grid.
      */
     public void setLocation(String baseLocation) {
-        locationCells.add(baseLocation);
+        char row = baseLocation.charAt(0); // Get the row A,B,C,D
+        int column = Integer.parseInt(baseLocation.substring(1));
 
+        for(int i = 0; i < 3; i++) {
+            locationCells.add(row + String.valueOf(column + i));
+        }
     }
 
     /***
