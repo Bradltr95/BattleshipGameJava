@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class BattleshipGame {
     public static void main(String[] args) {
+        // Create the battleship object
         Battleship ship = new Battleship();
-        // @TODO Implement RNG into the game so the location of the ship is dynamic each time we start the game
+        // Set the max row and column length of the game grid
+
         ship.setLocation("A2");
         ship.setLocation("A3");
         ship.setLocation("A4");
