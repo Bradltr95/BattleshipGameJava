@@ -40,7 +40,7 @@ public class Battleship {
 
             if(locationCells.isEmpty()) {
                 hitStatus = "kill";
-            }else {
+            } else {
                 hitStatus = "hit";
             }
         }
