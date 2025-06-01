@@ -6,7 +6,6 @@ public class BattleshipGame {
     public static void main(String[] args) {
         // Create the battleship object
         Battleship ship = new Battleship();
-        // Set the max row and column length of the game grid
 
         ship.setLocation("A2");
         ship.setLocation("A3");
@@ -16,7 +15,7 @@ public class BattleshipGame {
         int numOfGuesses = 0;
         while(isAlive) {
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Make a guess: ");
+            System.out.print("Guess the location of the ship: ");
             String userGuess = scanner.nextLine();
 
             String result = ship.checkHit(userGuess);
@@ -24,6 +23,7 @@ public class BattleshipGame {
             if(result.equals("kill")) {
                 numOfGuesses++;
                 System.out.println("You sunk the ship! It took you " + numOfGuesses + " tries!");
+
                 isAlive = false;
             }else if(result.equals("hit")) {
                 numOfGuesses++;
