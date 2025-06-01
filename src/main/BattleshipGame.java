@@ -1,5 +1,7 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BattleshipGame {
@@ -7,9 +9,13 @@ public class BattleshipGame {
         // Create the battleship object
         Battleship ship = new Battleship();
 
-        ship.setLocation("A2");
-        ship.setLocation("A3");
-        ship.setLocation("A4");
+        List<String> shipLoaction = new ArrayList<>();
+
+        shipLoaction.add("A2");
+        shipLoaction.add("A3");
+        shipLoaction.add("A4");
+
+        ship.setLocation(shipLoaction);
 
         boolean isAlive = true; // This detemrines if the ship is still alive and the game should continue running.
         int numOfGuesses = 0;
