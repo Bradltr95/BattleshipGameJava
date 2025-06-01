@@ -1,6 +1,9 @@
 package test;
 
 import main.Battleship;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 class BattleshipTest {
@@ -8,6 +11,18 @@ class BattleshipTest {
     private static final Logger logger = Logger.getLogger(BattleshipTest.class.getName());
     private static final String FAILED = "failed";
     private static String PASSED = "passed";
+    private static Battleship ship;
+
+    public static void setupShip(String[] cells) {
+        ship = new Battleship();
+        List<String> shipLocation = new ArrayList<>();
+
+        for(String cell : cells) {
+            shipLocation.add(cell);
+        }
+
+        ship.setLocation(shipLocation);
+    }
 
     public static void main(String[] args) {
         logger.info("Test Case 1: " + checkMissTest());
@@ -24,8 +39,9 @@ class BattleshipTest {
      * @date 05/19/25
      */
     public static String checkHitTest() {
-        Battleship ship = new Battleship();
-        ship.setLocation("A4");
+        String[] shipCells = {"A4", "A5"};
+        setupShip(shipCells);
+
         String hitResult = ship.checkHit("A4");
 
         String testResult = FAILED;
@@ -42,8 +58,8 @@ class BattleshipTest {
      * @date 05/19/25
      */
     public static String checkKillTest() {
-        Battleship ship = new Battleship();
-        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String[] shipCells = {"A4"};
+        setupShip(shipCells);
         String hitResult = ship.checkHit("A4");
         String testResult = FAILED;
         if(hitResult.equals("kill")) {
@@ -59,8 +75,8 @@ class BattleshipTest {
      * @date 05/19/25
      */
     public static String checkMissTest() {
-        Battleship ship = new Battleship();
-        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String[] shipCells = {"A4"};
+        setupShip(shipCells);
         String hitResult = ship.checkHit("A3");
 
         String testResult = FAILED;
@@ -78,8 +94,8 @@ class BattleshipTest {
      * @date 05/19/25
      */
     public static String checkHitThenMiss() {
-        Battleship ship = new Battleship();
-        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String[] shipCells = {"A4", "A5"};
+        setupShip(shipCells);
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A3");
 
@@ -97,8 +113,8 @@ class BattleshipTest {
      * @date 05/19/25
      */
     public static String hitSameLocationTwice() {
-        Battleship ship = new Battleship();
-        ship.setLocation("A4"); // Will set the location cells to 4, 5, 6
+        String[] shipCells = {"A4", "A5"};
+        setupShip(shipCells);
         String hitResult = ship.checkHit("A4");
         String missResult = ship.checkHit("A4");
 
