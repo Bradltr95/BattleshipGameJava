@@ -1,25 +1,19 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Battleship {
-    private ArrayList<String> locationCells = new ArrayList<>();
+    private List<String> locationCells = new ArrayList<>();
     private int numOfHits = 0;
 
     /***
-     * The purpose of this fucntion is to set the location of the ships 3 cells automatically for us based
-     * on the initial baseLocation paramater that we provide. For example, if we provide a base of A4 then
-     * the function will extract the A and 4, increment the number portion and add the other two cells to the location
-     * array list.
-     * @param baseLocation The starting position on the battleship grid.
+     * Set the instance variable locationCells of the Battleship with the local
+     * variable passed into the setLocation function.
+     * @param loc The starting position on the battleship grid.
      */
-    public void setLocation(String baseLocation) {
-        char row = baseLocation.charAt(0); // Get the row A,B,C,D
-        int column = Integer.parseInt(baseLocation.substring(1));
-
-        for(int i = 0; i < 3; i++) {
-            locationCells.add(row + String.valueOf(column + i));
-        }
+    public void setLocation(List<String> loc) {
+        locationCells = loc;
     }
 
     /***
